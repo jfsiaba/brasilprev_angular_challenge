@@ -1,0 +1,46 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<div style="text-align:center">
+
+  <img width="200" alt="Angular Logo" src="https://the-artifice.com/wp-content/uploads/2015/09/Pokemon-logo.jpg">
+  <h3>
+    Bem-vindo ao PokemonTCG
+  </h3>
+ <div>
+   Digite o nome do Pokemon a ser pesquisado:
+ </div>
+ <div>
+   <input id="busca" #busca />
+ </div> 
+ <div>
+  <button type="button" class="btn btn-warning btn-sm" (click)="getCardByName(busca.value)">Pesquisar</button>
+ </div>
+</div>
+
+<div class="container">
+  <div class="card list-card">
+    <h5 class="card-header">Lista de pokemons</h5>
+    <div class="card-body">
+      <table class="table">
+          <thead>
+            <tr>              
+              <th scope="col">imageUrl</th>
+              <th scope="col">Name</th>
+              <th scope="col">Id</th>
+              <th scope="col">Types</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of card.cards">                            
+              <td><img  class="images" src="{{item.imageUrl}}"/></td>
+              <td>{{item.name}}</td>
+              <td>{{item.id}}</td>
+              <td *ngIf="item.types != null">{{item.types.join(", ")}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  </div>
+
+<app-cartas></app-cartas>
+
+<router-outlet></router-outlet>
